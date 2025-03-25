@@ -9,7 +9,7 @@
 Welcome to your new app.
 
 <button class="btn btn-primary" @onclick="CallHelloApi">Get Hello World</button>
-<button @onclick="() => responseMessage = DateTime.Now.ToString()">測試按鈕</button>
+
 <p>@responseMessage</p>
 
 
@@ -21,7 +21,7 @@ Welcome to your new app.
         try
         {
             Console.WriteLine("Calling API");
-            var response = await Http.GetAsync("/api/Hello/hello");
+            var response = await Http.GetAsync("/api/Hello");
 
             var content = await response.Content.ReadAsStringAsync();
                 responseMessage = content;
