@@ -1,4 +1,5 @@
 using HelloWorldAPI.Components;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddControllers();
+builder.Services.AddMudServices();
+
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5012") });
 
@@ -21,7 +24,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 
 app.UseAntiforgery();
 
