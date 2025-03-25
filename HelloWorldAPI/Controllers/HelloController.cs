@@ -6,7 +6,7 @@ namespace HelloWorldAPI.Controllers
     [Route("api/[controller]")]
     public class HelloController : ControllerBase
     {
-        [HttpGet("hello")]
+        [HttpGet]
         public IActionResult Hello()
         {
             var message = $"Hello, World!";
