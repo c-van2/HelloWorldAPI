@@ -6,44 +6,85 @@
 
 <PageTitle>CPD Record</PageTitle>
 
-<MudTable Items="@Elements.Take(4)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
-    <HeaderContent>
-        <MudTh>Nr</MudTh>
-        <MudTh>Sign</MudTh>
-        <MudTh>Name</MudTh>
-        <MudTh>Position</MudTh>
-        <MudTh>Molar mass</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="Nr">@context.Number</MudTd>
-        <MudTd DataLabel="Sign">@context.Sign</MudTd>
-        <MudTd DataLabel="Name">@context.Name</MudTd>
-        <MudTd DataLabel="Position" HideSmall="_hidePosition">@context.Position</MudTd>
-        <MudTd DataLabel="Molar mass">@context.Molar</MudTd>
-    </RowTemplate>
-</MudTable>
+<MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+    <MudTabPanel Text="MPFA CPD Outstanding">
+        <MudText>MPFA CPD Outstanding</MudText>
+        <MudPaper Class="p-4" Elevation="2">
+            <MudTable Items="@MpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading"
+                LoadingProgressColor="Color.Info">
+                <HeaderContent>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Full Name</MudTh>
+                    <MudTh>Total Hours (including Core)</MudTh>
+                    <MudTh>Core</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+                    <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
+                    <MudTd DataLabel="Core">@context.Core</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudPaper>
 
-<MudSwitch @bind-Value="_hidePosition" Color="Color.Primary">Hide <b>position</b> when Breakpoint=Xs</MudSwitch>
-<MudSwitch @bind-Value="_loading" Color="Color.Primary">Show Loading</MudSwitch>
+    </MudTabPanel>
+    <MudTabPanel Text="IA CPD Outstanding">
+        <MudText>IA CPD Outstanding</MudText>
+
+        <MudPaper Class="p-4" Elevation="2">
+            <MudTable Items="@IaCpdRecords" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading"
+                LoadingProgressColor="Color.Info">
+                <HeaderContent>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Full Name</MudTh>
+                    <MudTh>Total Hours (including Compulsory)</MudTh>
+                    <MudTh>Compulsory</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+                    <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
+                    <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudPaper>
+    </MudTabPanel>
+</MudTabs>
+
 
 @code {
-    private List<Element> Elements = new List<Element>
-    {
-        new Element { Number = 1, Sign = "H", Name = "Hydrogen", Position = "1", Molar = "1.008" },
-        new Element { Number = 2, Sign = "He", Name = "Helium", Position = "18", Molar = "4.0026" },
-        new Element { Number = 3, Sign = "Li", Name = "Lithium", Position = "1", Molar = "6.94" },
-        new Element { Number = 4, Sign = "Be", Name = "Beryllium", Position = "2", Molar = "9.0122" }
-    };
+    private List<IaCpdRecord> IaCpdRecords = new()
+{
+new() { Name = "Addy Ma", FullName = "MA Sai Chun", TotalHours = 8, Compulsory = 2 },
+new() { Name = "Jenny Wong", FullName = "WONG Mei Ling", TotalHours = 20, Compulsory = 5 },
+new() { Name = "Eric Chan", FullName = "CHAN Ka Ho", TotalHours = 3, Compulsory = 0 },
+new() { Name = "Lisa Lam", FullName = "LAM Wing Yee", TotalHours = 12, Compulsory = 4 }
+};
+    private List<MpfaCpdRecord> MpfaCpdRecords = new()
+{
+new() { Name = "Addy Ma", FullName = "MA Sai Chun", TotalHours = 8.0, Core = 2.0 },
+new() { Name = "Raymond Lee", FullName = "LEE Chun Kit", TotalHours = 16.5, Core = 6.0 },
+new() { Name = "Natalie Ho", FullName = "HO Wai Man", TotalHours = 4.25, Core = 1.0 },
+new() { Name = "Tina Cheung", FullName = "CHEUNG Mei Yi", TotalHours = 10.75, Core = 4.25 }
+};
 
     private bool _loading = false;
     private bool _hidePosition = false;
 
-    private class Element
+    private class IaCpdRecord
     {
-        public int Number { get; set; }
-        public string Sign { get; set; }
         public string Name { get; set; }
-        public string Position { get; set; }
-        public string Molar { get; set; }
+        public string FullName { get; set; }
+        public int TotalHours { get; set; }
+        public double Compulsory { get; set; }
     }
+
+    public class MpfaCpdRecord
+    {
+        public string Name { get; set; }
+        public string FullName { get; set; }
+        public double TotalHours { get; set; }
+        public double Core { get; set; }
+    }
+
 }
