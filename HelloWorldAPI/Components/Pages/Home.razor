@@ -1,6 +1,9 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @inject HttpClient Http
+@using System.Text.Json
+@using System.Collections.Generic
+
 
 <PageTitle>Home</PageTitle>
 
@@ -20,6 +23,31 @@ Welcome to your new app.
     {
         try
         {
+            var response = await Http.GetAsync("http://localhost:5012/api/hello");
+            var json = await response.Content.ReadAsStringAsync();
+
+            responseMessage = $"Raw: {json}";
+
+            if (!string.IsNullOrWhiteSpace(json))
+            {
+                var result = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+                responseMessage = result?["message"] ?? "no message";
+            }
+            else
+            {
+                responseMessage = "API returned empty response";
+            }
+        }
+        catch (Exception ex)
+        {
+            responseMessage = $"Exception: {ex.Message}";
+        }
+    }
+}
+
+
+@*try
+        {
             Console.WriteLine("Calling API");
             var response = await Http.GetAsync("/api/Hello");
 
@@ -31,4 +59,4 @@ Welcome to your new app.
             responseMessage = $"Exception: {ex.Message}";
         }
     }
-}
+}*@
