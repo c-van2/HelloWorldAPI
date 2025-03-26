@@ -1,0 +1,27 @@
+.text-primary {
+    color: #3E5783 !important;
+}
+.bg-primary {
+    background-color: #3E5783 !important;
+    color: white;
+}
+.border-primary {
+    border-color: #3E5783 !important;
+}
+
+.fit-column {
+    white-space: nowrap;
+    width: 5%;
+}
+
+.overview-box {
+    background-color: #f5f5f5;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.text-danger {
+    color: red;
+}

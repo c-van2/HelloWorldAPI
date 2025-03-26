@@ -5,3 +5,88 @@
 @using System.Net.Http.Json
 
 <PageTitle>CPD Record</PageTitle>
+<MudButton Color="Color.Primary" Variant="Variant.Filled">測試按鈕</MudButton>
+
+<div class="cpd-container">
+    <!-- Header -->
+    <header class="d-flex justify-content-between align-items-center p-3 border-bottom">
+        <div><strong>CPD RECORD</strong></div>
+        <div>AMG ACADEMY</div>
+    </header>
+
+    <!-- Main Title -->
+    <h2 class="text-primary mt-4">Continuing Professional Development (CPD) Record</h2>
+
+    <!-- Overview Box -->
+    <div class="overview-box bg-light p-4 mt-3 rounded">
+        <div class="d-flex justify-content-between">
+            <!-- IA Block -->
+            <div class="w-50 pe-3">
+                <h5 class="text-primary">Insurance Authority (IA)</h5>
+                <p class="text-danger">DUE on 30 Jun 2025</p>
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Total Hours<br /><small>including Compulsory</small></th>
+                            <th>Compulsory#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start align-middle ps-8 fit-column">Required</td>
+                            <td>15.0</td>
+                            <td>3.0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start align-middle ps-8 fit-column">Earned</td>
+                            <td>25.0</td>
+                            <td>1.0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start align-middle ps-8 fit-column">Outstanding</td>
+                            <td>0.0</td>
+                            <td class="text-danger">2.0</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- MPFA Block -->
+            <div class="w-50 ps-3">
+                <h5 class="text-warning">Mandatory Provident Fund Schemes Authority (MPFA)</h5>
+                <p class="text-danger">DUE on 30 Nov 2025</p>
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Total Hours<br /><small>including Core</small></th>
+                            <th>Core</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start align-middle ps-8 fit-column">Required</td>
+                            <td>15.0</td>
+                            <td>3.0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start align-middle ps-8 fit-column">Earned</td>
+                            <td>25.0</td>
+                            <td>1.0</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start align-middle ps-8 fit-column">Outstanding</td>
+                            <td>0.0</td>
+                            <td class="text-danger">3.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mt-2">
+            <small><strong>Notes:</strong> # IA compulsory CPD hours on "Ethics or Regulations"</small>
+        </div>
+    </div>
+</div>
